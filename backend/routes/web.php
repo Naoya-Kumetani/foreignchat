@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MenberController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,4 +23,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/menbers', 'App\Http\Controllers\MenberController@menber')->name('menber');
+Route::get('/menbers', 'App\Http\Controllers\MenberController@menbers')->name('menbers');
+// Route::post('/register', 'App\Http\Controllers\Auth\RegisterController@store')->name('register.store');

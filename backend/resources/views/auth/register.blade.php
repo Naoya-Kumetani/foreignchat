@@ -61,6 +61,38 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="introduction" class="col-md-4 col-form-label text-md-right">self-introduction</label>
+
+                            <div class="col-md-6">
+                                <input id="introduction"  class="form-control" name="introduction">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="birthday" class="col-md-4 col-form-label text-md-right">birthday</label>
+
+                            <div class="col-md-6">
+                                <input id="birthday"  class="form-control" name="birthday">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="nationality" class="col-md-4 col-form-label text-md-right">nationality</label>
+
+                            <div class="col-md-6">
+                                <input id="nationality"  class="form-control" name="nationality">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="learning_language" class="col-md-4 col-form-label text-md-right">learning_language</label>
+
+                            <div class="col-md-6">
+                                <input id="learning_language"  class="form-control" name="learning_language">
+                            </div>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

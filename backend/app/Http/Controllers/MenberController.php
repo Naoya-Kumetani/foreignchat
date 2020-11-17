@@ -7,8 +7,8 @@ use App\Models\Menber;
 
 class MenberController extends Controller
 {
-    public function menber(){
-        $menbers=Menber::Auth();
+    public function menbers(){
+        $menbers=Menber::all();
         return view('menber',compact("menbers"));
     }
 }

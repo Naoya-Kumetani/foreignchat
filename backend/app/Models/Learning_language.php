@@ -10,6 +10,6 @@ class Learning_language extends Model
     use HasFactory;
 
     public function menber(){
-        return $this->belongsTo(menber::class);
+        return $this->belongsTo('App\Models\Menber');
     }
 }

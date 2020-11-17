@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Menber;
+use App\Models\Learning_language;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -53,6 +55,10 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:menbers'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'introduction' => ['required', 'string',' max:300'],
+            'birthday' => [ 'required','string'],
+            'nationality' => [ 'required','string'],
+            'learning_language' => [ 'required','string'],
         ]);
     }
 
@@ -64,10 +70,21 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return Menber::create([
+         $menber=Menber::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'introduction' => $data['introduction'],
+            'birthday' => $data['birthday'],
+            'nationality' => $data['nationality'],
+            'learning_language' => $data['learning_language'],
         ]);
+        $learning_language = new Learning_language;
+        $learning_language->language = $data['learning_language'];
+        $learning_language->menber_id = $menber->id;
+        $learning_language->save();
+        return $menber;
     }
+
+    
 }
