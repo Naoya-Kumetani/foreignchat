@@ -24,4 +24,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/menbers', 'App\Http\Controllers\MenberController@menbers')->name('menbers');
-// Route::post('/register', 'App\Http\Controllers\Auth\RegisterController@store')->name('register.store');
+Route::get('/menbers/{menber}', 'App\Http\Controllers\MenberController@show')->name('menbers.show');
+Route::get('me/edit', 'App\Http\Controllers\MenberController@edit')->name('menbers.edit');
+Route::post('me/edit', 'App\Http\Controllers\MenberController@update')->name('menbers.update');
