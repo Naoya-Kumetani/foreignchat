@@ -86,10 +86,26 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="learning_language" class="col-md-4 col-form-label text-md-right">learning_language</label>
+                            <label for="learning_language_0" class="col-md-4 col-form-label text-md-right">learning_language</label>
 
                             <div class="col-md-6">
-                                <input id="learning_language"  class="form-control" name="learning_language">
+                                <input id="learning_language_0"  class="form-control" name="learning_language[0]">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="learning_language_1" class="col-md-4 col-form-label text-md-right">learning_language</label>
+
+                            <div class="col-md-6">
+                                <input id="learning_language_1"  class="form-control" name="learning_language[1]">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="learning_language_2" class="col-md-4 col-form-label text-md-right">learning_language</label>
+
+                            <div class="col-md-6">
+                                <input id="learning_language_2"  class="form-control" name="learning_language[2]">
                             </div>
                         </div>
 

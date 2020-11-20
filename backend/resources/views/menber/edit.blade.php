@@ -42,28 +42,6 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
                             <label for="introduction" class="col-md-4 col-form-label text-md-right">self-introduction</label>
 
                             <div class="col-md-6">
@@ -88,10 +66,26 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="learning_language" class="col-md-4 col-form-label text-md-right">learning_language</label>
+                            <label for="learning_language_0" class="col-md-4 col-form-label text-md-right">learning_language</label>
 
                             <div class="col-md-6">
-                                <input id="learning_language"  class="form-control" name="learning_language" >
+                                <input id="learning_language_0"  class="form-control" name="learning_language[0]" value="{{$menber->learning_language[0]->language}}" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="learning_language_1" class="col-md-4 col-form-label text-md-right">learning_language</label>
+
+                            <div class="col-md-6">
+                                <input id="learning_language_1"  class="form-control" name="learning_language[1]" value="{{$menber->learning_language[1]->language}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="learning_language_2" class="col-md-4 col-form-label text-md-right">learning_language</label>
+
+                            <div class="col-md-6">
+                                <input id="learning_language_2"  class="form-control" name="learning_language[2]" value="{{$menber->learning_language[2]->language}}">
                             </div>
                         </div>
 

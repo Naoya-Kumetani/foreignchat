@@ -30,6 +30,6 @@ class Menber extends Authenticatable
 
 
     public function learning_language(){
-        return $this->hasMany('App\Models\Learning_language');
+        return $this->hasMany('App\Models\Learning_language')->orderBy('id','asc');
     }
 }

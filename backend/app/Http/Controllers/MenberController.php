@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Menber;
+use App\Models\Learning_language;
 use Illuminate\Support\Facades\Auth;
 
 class MenberController extends Controller
@@ -20,21 +21,35 @@ class MenberController extends Controller
 
     public function edit(){
         $menber = Auth::user();
+        foreach(range(0,2) as $i){
+            if(empty($menber->learning_language[$i])){
+                $menber->learning_language[$i] = new Learning_language;
+            }
+        }
         return view('menber.edit', compact('menber'));
     }
 
     public function update(Request $request){
-        $menber = Auth::menber();
+        $menber = Auth::user();
         $menber->name = $request->name;
         $menber->email = $request->email;
-        $menber->password = $request->password;
         $menber->introduction = $request->introduction;
         $menber->birthday = $request->birthday;
         $menber->nationality = $request->nationality;
-        $learning_language = new Learning_language;
-        $learning_language->language = $request->learning_language;
-        $learning_language->menber_id = $menber->id;
-        $learning_language->save();
+        foreach($request->learning_language as $i => $input_language){
+            if(empty($menber->learning_language[$i])){
+                $menber->learning_language[$i] = new Learning_language;
+                $menber->learning_language[$i]->menber_id=$menber->id;
+            }
+            $learning_language = $menber->learning_language[$i];
+            $learning_language->language = $input_language;
+            if(empty($input_language)){
+                $learning_language->delete();
+            }else{
+                $learning_language->save();
+            }
+        }
+        
         $menber->save();
 
         return redirect()->back()->with(['message' => 'updated']);
