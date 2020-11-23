@@ -58,7 +58,7 @@ class RegisterController extends Controller
             'introduction' => ['required', 'string',' max:300'],
             'birthday' => [ 'required','string'],
             'nationality' => [ 'required','string'],
-            'learning_language' => [ 'required','string'],
+            'learning_language.*' => [ 'required','string'],
         ]);
     }
 
@@ -77,12 +77,15 @@ class RegisterController extends Controller
             'introduction' => $data['introduction'],
             'birthday' => $data['birthday'],
             'nationality' => $data['nationality'],
-            'learning_language' => $data['learning_language'],
         ]);
-        $learning_language = new Learning_language;
-        $learning_language->language = $data['learning_language'];
-        $learning_language->menber_id = $menber->id;
-        $learning_language->save();
+
+        foreach($data['learning_language'] as $i => $input_language){
+            $learning_language = new Learning_language;
+            $learning_language->language = $input_language;
+            $learning_language->menber_id = $menber->id;
+            $learning_language->save();
+        }
+        
         return $menber;
     }
 
