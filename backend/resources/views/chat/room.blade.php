@@ -28,5 +28,5 @@
 @endsection
 
 @section('js')
-    <script src="{{ asset('/js/comment.js') }}" defer></script>
+    <script src="{{ asset('js/comment.js') }}"></script>
 @endsection
