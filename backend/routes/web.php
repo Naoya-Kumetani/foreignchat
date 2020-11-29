@@ -27,3 +27,7 @@ Route::get('/menbers', 'App\Http\Controllers\MenberController@menbers')->name('m
 Route::get('/menbers/{menber}', 'App\Http\Controllers\MenberController@show')->name('menbers.show');
 Route::get('me/edit', 'App\Http\Controllers\MenberController@edit')->name('menbers.edit');
 Route::post('me/edit', 'App\Http\Controllers\MenberController@update')->name('menbers.update');
+Route::get('rooms', 'App\Http\Controllers\ChatsController@rooms')->name('chats.rooms');
+Route::get('/menber/{menber}/room', 'App\Http\Controllers\ChatsController@room')->name('chats.room');
+Route::post('/menber/{menber}/add', 'App\Http\Controllers\ChatsController@add')->name('chats.add');
+Route::get('/result/ajax', 'App\Http\Controllers\ChatsController@getData')->name('chats.result');
