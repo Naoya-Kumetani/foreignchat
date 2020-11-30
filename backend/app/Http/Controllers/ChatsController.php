@@ -11,16 +11,39 @@ use Illuminate\Support\Facades\Auth;
 
 class ChatsController extends Controller
 {
-    // public function rooms(){
-    //     return view('chat.room');
-    // }
+    public function rooms(){
+        $rooms = Room::where('menber1_id', '=', Auth::user()->id)
+        ->orWhere('menber2_id', '=', Auth::user()->id)
+        ->get();
+
+        $menbers = [];
+        foreach($rooms as $room){
+            if($room->menber1_id === Auth::user()->id){
+                array_push($menbers,Menber::where('id', '=', $room->menber2_id)->first());
+            }elseif($room->menber2_id === Auth::user()->id){
+                array_push($menbers,Menber::where('id', '=', $room->menber1_id)->first());
+            }
+        }
+        
+        return view('chat.rooms',compact('menbers'));
+    }
 
     public function room(Menber $menber)
     {   
-        $chats = Chat::get();
-        // 一度ルームが開かれたら同じルームは記録されないようにしたい
         Room::findByMembers(Auth::user(),$menber);
-        return view('chat.room', compact('chats','menber'));
+        if(Auth::user()->id > $menber->id){
+            $room=Room::where([
+                ['menber1_id', '=', Auth::user()->id],
+                ['menber2_id', '=', $menber->id]
+                ])->first();
+        }else{
+            $room=Room::where([
+                ['menber1_id', '=', $menber->id],
+                ['menber2_id', '=', Auth::user()->id]
+                ])->first();
+        }
+        $chats = Chat::where('room_id', '=', $room->id)->get();
+        return view('chat.room', compact('chats','menber','room'));
     }
 
     public function add(Request $request,Menber $menber)
@@ -39,10 +62,10 @@ class ChatsController extends Controller
     return redirect()->back();
 }
 
-    public function getData()
-    {
-        $chats = Chat::orderBy('created_at', 'desc')->get();
-        $json = ["chats" => $chats];
-        return response()->json($json);
-    }
+    // public function getData()
+    // {
+    //     $chats = Chat::orderBy('created_at', 'desc')->get();
+    //     $json = ["chats" => $chats];
+    //     return response()->json($json);
+    // }
 }

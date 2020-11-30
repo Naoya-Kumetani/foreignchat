@@ -6,7 +6,11 @@
         <div class="card">
             <div class="card-header">Comment</div>
             <div class="card-body chat-card">
-                <div id="comment-data"></div>
+                <div id="comment-data">
+                @foreach ($chats as $item)
+                    {{$item->body}}/{{$item->menber->name}}/{{$item->created_at}}<br>
+                @endforeach
+                </div>
             </div>
         </div>
     </div>
@@ -27,6 +31,6 @@
 
 @endsection
 
-@section('js')
+<!-- @section('js')
     <script src="{{ asset('js/comment.js') }}"></script>
-@endsection
+@endsection -->

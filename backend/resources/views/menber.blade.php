@@ -1,3 +1,4 @@
+
 @foreach($menbers as $menber)
 @if(Auth::user()->id!==$menber->id)
 <a href="{{route('menbers.show',$menber)}}">{{$menber->name}}</a>/{{$menber->introduction}}/{{$menber->birthday}}/{{$menber->nationality}}/

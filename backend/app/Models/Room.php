@@ -14,6 +14,10 @@ class Room extends Model
         return $this->hasMany(Chat::class);
     }
 
+    public function menber(){
+        return $this->belongsTo(Menber::class);
+    }
+
     public static function findByMembers(Menber $member1,Menber $member2){
         if($member1->id > $member2->id){
             $menber1_id = $member1->id;
