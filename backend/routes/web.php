@@ -31,3 +31,14 @@ Route::get('rooms', 'App\Http\Controllers\ChatsController@rooms')->name('chats.r
 Route::get('/menber/{menber}/room', 'App\Http\Controllers\ChatsController@room')->name('chats.room');
 Route::post('/menber/{menber}/add', 'App\Http\Controllers\ChatsController@add')->name('chats.add');
 Route::get('/result/ajax', 'App\Http\Controllers\ChatsController@getData')->name('chats.result');
+Route::get('/timelines', 'App\Http\Controllers\TimelinesController@timelines')->name('timelines.timelines');
+Route::prefix('timelines')->as('timelines.')->group(function () {
+    Route::middleware('auth')->group(function () {
+    Route::get('create', 'App\Http\Controllers\TimelinesController@create')->name('create');
+    Route::post('store', 'App\Http\Controllers\TimelinesController@store')->name('store');
+    Route::post('{timeline}/delete', 'App\Http\Controllers\TimelinesController@delete')->name('delete');
+    Route::post('{timeline}/reply', 'App\Http\Controllers\TimelinesController@reply')->name('reply');
+    });
+    Route::get('{timeline}', 'App\Http\Controllers\TimelinesController@show')->name('show');
+});
+
