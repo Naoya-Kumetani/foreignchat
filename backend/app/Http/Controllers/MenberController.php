@@ -54,4 +54,23 @@ class MenberController extends Controller
 
         return redirect()->back()->with(['message' => 'updated']);
     }
+
+    public function search(Request $request){
+        $menbers=Menber::where([
+            ['nationality','=',"$request->nationality"]
+        ])->get();
+        
+        $searchedMenbers=[];
+        foreach($menbers as $menber){
+            // learning_languageは最多で一人3つだがこの書き方で大丈夫なのか
+            if($menber->learning_language[0]->language === $request->learning_language||
+            $menber->learning_language[1]->language === $request->learning_language||
+            $menber->learning_language[2]->language === $request->learning_language
+            ){
+                array_push($searchedMenbers,$menber);
+            }
+        }
+        
+        return view('menber.searchedMenbers',compact("searchedMenbers"));
+    }
 }

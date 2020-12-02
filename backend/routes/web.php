@@ -41,4 +41,5 @@ Route::prefix('timelines')->as('timelines.')->group(function () {
     });
     Route::get('{timeline}', 'App\Http\Controllers\TimelinesController@show')->name('show');
 });
+Route::get('/search/menber', 'App\Http\Controllers\MenberController@search')->name('menbers.search');
 

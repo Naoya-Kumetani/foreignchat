@@ -81,7 +81,12 @@
                             <label for="nationality" class="col-md-4 col-form-label text-md-right">nationality</label>
 
                             <div class="col-md-6">
-                                <input id="nationality"  class="form-control" name="nationality">
+                                <select id="nationality"  class="form-control" name="nationality">
+                                    <option value="United Satates">United Satates</option>
+                                    <option value="Japan">Japan</option>
+                                    <option value="Korea">Korea</option>
+                                    <option value="China">China</option>
+                                </select>               
                             </div>
                         </div>
 
@@ -89,7 +94,12 @@
                             <label for="learning_language_0" class="col-md-4 col-form-label text-md-right">learning_language</label>
 
                             <div class="col-md-6">
-                                <input id="learning_language_0"  class="form-control" name="learning_language[0]">
+                                <select id="learning_language_0"  class="form-control" name="learning_language[0]">
+                                    <option value="English">English</option>
+                                    <option value="Japanese">Japanese</option>
+                                    <option value="Korean">Korean</option>
+                                    <option value="Chinese">Chinese</option>
+                                </select>     
                             </div>
                         </div>
 
@@ -97,7 +107,12 @@
                             <label for="learning_language_1" class="col-md-4 col-form-label text-md-right">learning_language</label>
 
                             <div class="col-md-6">
-                                <input id="learning_language_1"  class="form-control" name="learning_language[1]">
+                                <select id="learning_language_1"  class="form-control" name="learning_language[1]">
+                                    <option value="English">English</option>
+                                    <option value="Japanese">Japanese</option>
+                                    <option value="Korean">Korean</option>
+                                    <option value="Chinese">Chinese</option>
+                                </select>     
                             </div>
                         </div>
 
@@ -105,7 +120,12 @@
                             <label for="learning_language_2" class="col-md-4 col-form-label text-md-right">learning_language</label>
 
                             <div class="col-md-6">
-                                <input id="learning_language_2"  class="form-control" name="learning_language[2]">
+                                <select id="learning_language_2"  class="form-control" name="learning_language[2]">
+                                    <option value="English">English</option>
+                                    <option value="Japanese">Japanese</option>
+                                    <option value="Korean">Korean</option>
+                                    <option value="Chinese">Chinese</option>
+                                </select>     
                             </div>
                         </div>
 
