@@ -1,4 +1,4 @@
-(function() {
+$(function() {
     get_data();
 });
 
@@ -7,9 +7,25 @@ function get_data() {
         url: "result/ajax/",
         dataType: "json",
         success: data => {
-            console.log(data.chats);
-            for (let i = 0; i < data.chats.length; i++) {
-                console.log(data.chats[i].body);
+            $("#comment-data")
+                .find(".comment-visible")
+                .remove();
+        
+            for (var i = 0; i < data.chats.length; i++) {
+                var html = `
+                            <div class="media comment-visible">
+                                <div class="media-body comment-body">
+                                    <div class="row">
+                                        
+                                        <span class="comment-body-user" id="name">${data.chats[i].menber.name}</span>
+                                        <span class="comment-body-time" id="created_at">${data.chats[i].created_at}</span>
+                                    </div>
+                                    <span class="comment-body-content" id="comment">${data.chats[i].body}</span>
+                                </div>
+                            </div>
+                        `;
+        
+                $("#comment-data").append(html);
             }
         },
         error: () => {
@@ -17,5 +33,5 @@ function get_data() {
         }
     });
 
-    setTimeout("get_data()", 5000);
+    setTimeout("get_data()", 1000);
 }

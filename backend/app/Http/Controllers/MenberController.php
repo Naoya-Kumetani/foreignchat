@@ -62,7 +62,6 @@ class MenberController extends Controller
         
         $searchedMenbers=[];
         foreach($menbers as $menber){
-            // learning_languageは最多で一人3つだがこの書き方で大丈夫なのか
             if($menber->learning_language[0]->language === $request->learning_language||
             $menber->learning_language[1]->language === $request->learning_language||
             $menber->learning_language[2]->language === $request->learning_language
@@ -72,5 +71,9 @@ class MenberController extends Controller
         }
         
         return view('menber.searchedMenbers',compact("searchedMenbers"));
+    }
+
+    public function form(){
+        return view('menber.form');
     }
 }

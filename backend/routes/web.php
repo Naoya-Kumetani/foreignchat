@@ -30,7 +30,7 @@ Route::post('me/edit', 'App\Http\Controllers\MenberController@update')->name('me
 Route::get('rooms', 'App\Http\Controllers\ChatsController@rooms')->name('chats.rooms');
 Route::get('/menber/{menber}/room', 'App\Http\Controllers\ChatsController@room')->name('chats.room');
 Route::post('/menber/{menber}/add', 'App\Http\Controllers\ChatsController@add')->name('chats.add');
-Route::get('/result/ajax', 'App\Http\Controllers\ChatsController@getData')->name('chats.result');
+Route::get('menber/{menber}/result/ajax', 'App\Http\Controllers\ChatsController@getData')->name('chats.result');
 Route::get('/timelines', 'App\Http\Controllers\TimelinesController@timelines')->name('timelines.timelines');
 Route::prefix('timelines')->as('timelines.')->group(function () {
     Route::middleware('auth')->group(function () {
@@ -42,4 +42,5 @@ Route::prefix('timelines')->as('timelines.')->group(function () {
     Route::get('{timeline}', 'App\Http\Controllers\TimelinesController@show')->name('show');
 });
 Route::get('/search/menber', 'App\Http\Controllers\MenberController@search')->name('menbers.search');
+Route::get('form', 'App\Http\Controllers\MenberController@form')->name('menbers.form');
 

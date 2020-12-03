@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Chat;
+use App\Models\Learning_language;
+
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Menber extends Authenticatable
@@ -29,7 +32,11 @@ class Menber extends Authenticatable
     ];
 
 
+    public function chat(){
+        return $this->hasMany(Chat::class);
+    }
+
     public function learning_language(){
-        return $this->hasMany('App\Models\Learning_language')->orderBy('id','asc');
+        return $this->hasMany(Learning_language::class)->orderBy('id','asc');
     }
 }

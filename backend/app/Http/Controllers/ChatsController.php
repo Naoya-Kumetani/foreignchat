@@ -42,30 +42,44 @@ class ChatsController extends Controller
                 ['menber2_id', '=', Auth::user()->id]
                 ])->first();
         }
-        $chats = Chat::where('room_id', '=', $room->id)->get();
-        return view('chat.room', compact('chats','menber','room'));
+        // $chats = Chat::where('room_id', '=', $room->id)->get();
+        // return view('chat.room', compact('chats','menber','room'));
+        return view('chat.room', compact('menber','room'));
     }
-
+    
+    public function getData(Menber $menber)
+    {
+        Room::findByMembers(Auth::user(),$menber);
+        if(Auth::user()->id > $menber->id){
+            $room=Room::where([
+                ['menber1_id', '=', Auth::user()->id],
+                ['menber2_id', '=', $menber->id]
+                ])->first();
+        }else{
+            $room=Room::where([
+                ['menber1_id', '=', $menber->id],
+                ['menber2_id', '=', Auth::user()->id]
+                ])->first();
+        }
+        // $chats = Chat::where('room_id', '=', $room->id)->get();
+        $chats = Chat::where('room_id', '=', $room->id)->with('menber')->orderBy('created_at', 'desc')->get();
+        // $chats = Chat::with('menber')->get();
+        $json = ["chats" => $chats];
+        return response()->json($json);
+    }
+    
     public function add(Request $request,Menber $menber)
 {   
-    // $menber = Auth::user();
-        // 今いるroomのIDを入れたい
+    
     $room=Room::findByMembers(Auth::user(),$menber);
     
     $chat=new Chat;
     $chat->menber_id = Auth::user()->id;
     $chat->room_id = $room->id;
     $chat->body = $request->body;
-
     $chat->save();
     
     return redirect()->back();
 }
 
-    // public function getData()
-    // {
-    //     $chats = Chat::orderBy('created_at', 'desc')->get();
-    //     $json = ["chats" => $chats];
-    //     return response()->json($json);
-    // }
 }
