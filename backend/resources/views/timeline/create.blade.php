@@ -4,6 +4,6 @@
   <form method="POST" action="{{route('timelines.store')}}">
     @csrf
     <input name="body" type="text" value="" />
-    <button type="submit">Post</button>
+    <button type="submit">post</button>
   </form>
 @endsection

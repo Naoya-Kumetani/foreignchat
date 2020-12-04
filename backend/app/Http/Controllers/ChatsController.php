@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Room;
 use Illuminate\Support\Facades\Auth;
 
+
 class ChatsController extends Controller
 {
     public function rooms(){

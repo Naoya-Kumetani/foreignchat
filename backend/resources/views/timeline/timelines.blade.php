@@ -11,7 +11,7 @@
           @if(Auth::id() === $timeline->menber_id)
             <form method="POST" action="{{ route('timelines.delete', $timeline->id) }}">
               @csrf
-              <button type="submit" class="btn btn-danger">削除</button>
+              <button type="submit" class="btn btn-danger">delete</button>
             </form>
           @endif
         </div>
