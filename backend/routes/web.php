@@ -23,14 +23,23 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::as('members.')->middleware('auth')->group(function () {
 Route::get('/members', 'App\Http\Controllers\memberController@members')->name('members');
-Route::get('/members/{member}', 'App\Http\Controllers\memberController@show')->name('members.show');
-Route::get('me/edit', 'App\Http\Controllers\memberController@edit')->name('members.edit');
-Route::post('me/edit', 'App\Http\Controllers\memberController@update')->name('members.update');
-Route::get('rooms', 'App\Http\Controllers\ChatsController@rooms')->name('chats.rooms');
-Route::get('/member/{member}/room', 'App\Http\Controllers\ChatsController@room')->name('chats.room');
-Route::post('/member/{member}/add', 'App\Http\Controllers\ChatsController@add')->name('chats.add');
-Route::get('member/{member}/result/ajax', 'App\Http\Controllers\ChatsController@getData')->name('chats.result');
+Route::get('/members/{member}', 'App\Http\Controllers\memberController@show')->name('show');
+Route::get('me/edit', 'App\Http\Controllers\memberController@edit')->name('edit');
+Route::post('me/edit', 'App\Http\Controllers\memberController@update')->name('update');
+Route::get('/search/member', 'App\Http\Controllers\memberController@search')->name('search');
+Route::get('form', 'App\Http\Controllers\memberController@form')->name('form');
+});
+
+Route::as('chats.')->middleware('auth')->group(function () {
+Route::get('rooms', 'App\Http\Controllers\ChatsController@rooms')->name('rooms');
+Route::get('/member/{member}/room', 'App\Http\Controllers\ChatsController@room')->name('room');
+Route::post('/member/{member}/add', 'App\Http\Controllers\ChatsController@add')->name('add');
+Route::get('member/{member}/result/ajax', 'App\Http\Controllers\ChatsController@getData')->name('result');
+});
+
 Route::get('/timelines', 'App\Http\Controllers\TimelinesController@timelines')->name('timelines.timelines');
 Route::prefix('timelines')->as('timelines.')->group(function () {
     Route::middleware('auth')->group(function () {
@@ -41,6 +50,4 @@ Route::prefix('timelines')->as('timelines.')->group(function () {
     });
     Route::get('{timeline}', 'App\Http\Controllers\TimelinesController@show')->name('show');
 });
-Route::get('/search/member', 'App\Http\Controllers\memberController@search')->name('members.search');
-Route::get('form', 'App\Http\Controllers\memberController@form')->name('members.form');
 
