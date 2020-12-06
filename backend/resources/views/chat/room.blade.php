@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="chat-container row justify-content-center" id="room" data-menber-id="{{$menber->id}}">
+<div class="chat-container row justify-content-center" id="room" data-member-id="{{$member->id}}">
     <div class="chat-area">
         <div class="card">
             <div class="card-header">Comment</div>
@@ -15,7 +15,7 @@
 </div>
 
 
-<form id="new-message" method="POST" action="{{route('chats.add',$menber)}}">
+<form id="new-message" method="POST" action="{{route('chats.add',$member)}}">
     @csrf
     <div class="comment-container row justify-content-center">
         <div class="input-group comment-area">

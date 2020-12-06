@@ -4,15 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Timeline;
-use App\Models\Menber;
+use App\Models\Member;
 
 class Reply extends Model
 {
     protected $fillable = ['body'];
 
-    public function menber()
+    public function member()
     {
-        return $this->belongsTo(Menber::class);
+        return $this->belongsTo(Member::class);
     }
 
     public function timeline()

@@ -9,7 +9,7 @@ class Learning_language extends Model
 {
     use HasFactory;
 
-    public function menber(){
-        return $this->belongsTo('App\Models\Menber');
+    public function member(){
+        return $this->belongsTo('App\Models\member');
     }
 }

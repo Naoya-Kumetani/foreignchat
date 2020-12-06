@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Room;
-use App\Models\Menber;
+use App\Models\Member;
 use Carbon\Carbon;
 
 
 class chat extends Model
 {
     protected $fillable = [
-        'menber_id',  'body', 'room_id'
+        'member_id',  'body', 'room_id'
     ];
 
     protected $guarded = [
@@ -30,9 +30,9 @@ class chat extends Model
     
 }
 
-    public function menber()
+    public function member()
 {
-    return $this->belongsTo(Menber::class);
+    return $this->belongsTo(Member::class);
     
 }
 }

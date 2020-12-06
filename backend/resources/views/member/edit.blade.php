@@ -10,14 +10,14 @@
                     <div>{{ Session::get('message') }}</div>
                 @endif
                 <div class="card-body">
-                    <form method="POST" action="{{ route('menbers.update') }}">
+                    <form method="POST" action="{{ route('members.update') }}">
                         @csrf
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{$menber->name}}" required autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{$member->name}}" required autocomplete="name" autofocus>
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -31,7 +31,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{$menber->email}}" required autocomplete="email">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{$member->email}}" required autocomplete="email">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -45,7 +45,7 @@
                             <label for="introduction" class="col-md-4 col-form-label text-md-right">self-introduction</label>
 
                             <div class="col-md-6">
-                                <input id="introduction"  class="form-control" name="introduction" value="{{$menber->introduction}}">
+                                <input id="introduction"  class="form-control" name="introduction" value="{{$member->introduction}}">
                             </div>
                         </div>
 
@@ -64,7 +64,7 @@
                             <label for="native_language" class="col-md-4 col-form-label text-md-right">Native Language</label>
 
                             <div class="col-md-6">
-                                <select id="native_language"  class="form-control" name="native_language" value="{{$menber->native_language}}">
+                                <select id="native_language"  class="form-control" name="native_language" value="{{$member->native_language}}">
                                     <option value="English">English</option>
                                     <option value="v">Chinese</option>
                                     <option value="Hindi">Hindi</option>
@@ -105,7 +105,7 @@
                             <label for="learning_language_0" class="col-md-4 col-form-label text-md-right">learning_language</label>
 
                             <div class="col-md-6">
-                                <select id="learning_language_0"  class="form-control" name="learning_language[0]" value="{{$menber->learning_language[0]->language}}" required>
+                                <select id="learning_language_0"  class="form-control" name="learning_language[0]" value="{{$member->learning_language[0]->language}}" required>
                                 <option value="English">English</option>
                                     <option value="v">Chinese</option>
                                     <option value="Hindi">Hindi</option>
@@ -146,7 +146,7 @@
                             <label for="learning_language_1" class="col-md-4 col-form-label text-md-right">learning_language</label>
 
                             <div class="col-md-6">
-                                <select id="learning_language_1"  class="form-control" name="learning_language[1]" value="{{$menber->learning_language[1]->language}}" required>
+                                <select id="learning_language_1"  class="form-control" name="learning_language[1]" value="{{$member->learning_language[1]->language}}" required>
                                 <option value="English">English</option>
                                     <option value="v">Chinese</option>
                                     <option value="Hindi">Hindi</option>
@@ -187,7 +187,7 @@
                             <label for="learning_language_2" class="col-md-4 col-form-label text-md-right">learning_language</label>
 
                             <div class="col-md-6">
-                                <select id="learning_language_2"  class="form-control" name="learning_language[2]" value="{{$menber->learning_language[2]->language}}" required>
+                                <select id="learning_language_2"  class="form-control" name="learning_language[2]" value="{{$member->learning_language[2]->language}}" required>
                                 <option value="English">English</option>
                                     <option value="v">Chinese</option>
                                     <option value="Hindi">Hindi</option>

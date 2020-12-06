@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\Menber;
+use App\Models\Member;
 
 class Timeline extends Model
 {
@@ -13,8 +13,8 @@ class Timeline extends Model
     use SoftDeletes;
     protected $fillable = ['body']; 
 
-    public function menber(){
-    return $this->belongsTo(Menber::class);
+    public function member(){
+    return $this->belongsTo(Member::class);
 }
 
 public function replies(){

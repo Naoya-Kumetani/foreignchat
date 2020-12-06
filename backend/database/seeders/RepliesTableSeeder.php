@@ -16,17 +16,17 @@ class RepliesTableSeeder extends Seeder
     {
         $dataSet = [
             [
-                'menber_id' => 2,
+                'member_id' => 2,
                 'timeline_id' => 1,
                 'body' => 'ミニブログデビューおめでとう！',
             ],
             [
-                'menber_id' => 1,
+                'member_id' => 1,
                 'timeline_id' => 1,
                 'body' => 'ありがとう！',
             ],
             [
-                'menber_id' => 1,
+                'member_id' => 1,
                 'timeline_id' => 2,
                 'body' => 'ユーザーID: 1 の返信だよ',
             ],

@@ -9,7 +9,7 @@ use App\Models\Learning_language;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Menber extends Authenticatable
+class Member extends Authenticatable
 {
     use HasFactory;
     use Notifiable;

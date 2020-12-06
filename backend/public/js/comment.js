@@ -17,7 +17,7 @@ function get_data() {
                             <div class="media comment-visible">
                                 <div class="media-body comment-body">
                                     <div class="row">
-                                        <span class="comment-body-user" id="name">${data.chats[i].menber.name}</span>
+                                        <span class="comment-body-user" id="name">${data.chats[i].member.name}</span>
                                         <span class="comment-body-time" id="created_at">${new Date(data.chats[i].created_at).toLocaleString({hour12:true})}</span>
                                     </div>
                                     <span class="comment-body-content" id="comment">${data.chats[i].body}</span>
@@ -32,7 +32,7 @@ function get_data() {
                                 <div class="media comment-visible">
                                     <div class="media-body comment-body">
                                         <div class="row">
-                                            <span class="comment-body-user" id="name">${data.chats[i].menber.name}</span>
+                                            <span class="comment-body-user" id="name">${data.chats[i].member.name}</span>
                                             <span class="comment-body-time" id="created_at">${new Date(data.chats[i].created_at).toLocaleString({hour12:true})}</span>
                                         </div>
                                         <span class="comment-body-content" id="comment">${data.chats[i].body}</span>

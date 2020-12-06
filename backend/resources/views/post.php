@@ -1,6 +1,6 @@
 <?php
 // POSTメソッドでリクエストした値を取得
-$menber_id = $_POST['menber_id'];
+$member_id = $_POST['member_id'];
 $room_id = $_POST['room_id'];
 $body = $_POST['body'];
 
@@ -26,18 +26,18 @@ try {
 
 // データ追加用SQL
 // 値はバインドさせる
-$sql = "INSERT INTO chats(menber_id,room_id,body) VALUES(?,?,?)";
+$sql = "INSERT INTO chats(member_id,room_id,body) VALUES(?,?,?)";
 // SQLをセット
 $stmt = $dbh->prepare($sql);
 // SQLを実行
-$stmt->execute(array($menber_id,$room_id,$body));
+$stmt->execute(array($member_id,$room_id,$body));
 
 // 先ほど追加したデータを取得
 // idはlastInsertId()で取得できる
 $last_id = $dbh->lastInsertId();
 // データ追加用SQL
 // 値はバインドさせる
-$sql = "SELECT id, menber_id, room_id, body FROM chats WHERE id = ?";
+$sql = "SELECT id, member_id, room_id, body FROM chats WHERE id = ?";
 // SQLをセット
 $stmt = ($dbh->prepare($sql));
 // SQLを実行
@@ -54,7 +54,7 @@ $productList = array();
 while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
     $productList[] = array(
         'id'    => $row['id'],
-        'menber_id'  => $row['menber_id'],
+        'member_id'  => $row['member_id'],
         'room_id' => $row['room_id'],
         'body' => $row['body']
     );

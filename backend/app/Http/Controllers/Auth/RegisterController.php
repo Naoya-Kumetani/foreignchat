@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\Menber;
+use App\Models\Member;
 use App\Models\Learning_language;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -53,7 +53,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:menbers'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:members'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'introduction' => ['required', 'string',' max:300'],
             'birth_year' => [ 'required','string'],
@@ -66,11 +66,11 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\Models\Menber
+     * @return \App\Models\Member
      */
     protected function create(array $data)
     {
-         $menber=Menber::create([
+         $member=Member::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
@@ -82,11 +82,11 @@ class RegisterController extends Controller
         foreach($data['learning_language'] as $i => $input_language){
             $learning_language = new Learning_language;
             $learning_language->language = $input_language;
-            $learning_language->menber_id = $menber->id;
+            $learning_language->member_id = $member->id;
             $learning_language->save();
         }
         
-        return $menber;
+        return $member;
     }
 
     

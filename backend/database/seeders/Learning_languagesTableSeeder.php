@@ -17,12 +17,12 @@ class Learning_languagesTableSeeder extends Seeder
         $dataSet=[
             [
                 'id' =>1,
-                'menber_id'=>'1',
+                'member_id'=>'1',
                 'language' => 'Japanese'
             ],
             [
                 'id' =>2,
-                'menber_id'=>'2',
+                'member_id'=>'2',
                 'language' => 'English',
             ]
             ];

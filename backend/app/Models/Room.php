@@ -8,28 +8,28 @@ use App\Models\Chat;
 
 class Room extends Model
 {
-    protected $fillable = ['menber1_id', 'menber2_id'];
+    protected $fillable = ['member1_id', 'member2_id'];
 
     public function chat(){
         return $this->hasMany(Chat::class);
     }
 
-    public function menber(){
-        return $this->belongsTo(Menber::class);
+    public function member(){
+        return $this->belongsTo(Member::class);
     }
 
-    public static function findByMembers(Menber $member1,Menber $member2){
+    public static function findByMembers(Member $member1,Member $member2){
         if($member1->id > $member2->id){
-            $menber1_id = $member1->id;
-            $menber2_id = $member2->id;
+            $member1_id = $member1->id;
+            $member2_id = $member2->id;
         }else{
-            $menber1_id = $member2->id;
-            $menber2_id = $member1->id;
+            $member1_id = $member2->id;
+            $member2_id = $member1->id;
         }
 
         return Room::firstOrCreate([
-                'menber1_id' => $menber1_id,
-                'menber2_id' => $menber2_id
+                'member1_id' => $member1_id,
+                'member2_id' => $member2_id
             ]);
         
     }

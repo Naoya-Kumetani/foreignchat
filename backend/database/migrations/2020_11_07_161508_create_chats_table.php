@@ -15,21 +15,21 @@ class CreateChatsTable extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('menber1_id');
-            $table->unsignedBigInteger('menber2_id');
+            $table->unsignedBigInteger('member1_id');
+            $table->unsignedBigInteger('member2_id');
             $table->timestamps();
-            $table->foreign('menber1_id')->references('id')->on('menbers');
-            $table->foreign('menber2_id')->references('id')->on('menbers');
+            $table->foreign('member1_id')->references('id')->on('members');
+            $table->foreign('member2_id')->references('id')->on('members');
         });
 
         Schema::create('chats', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('menber_id');
+            $table->unsignedBigInteger('member_id');
             $table->unsignedBigInteger('room_id');
             $table->text('body',1000);
             $table->string('file')->nullable();
             $table->timestamps();
-            $table->foreign('menber_id')->references('id')->on('menbers');
+            $table->foreign('member_id')->references('id')->on('members');
             $table->foreign('room_id')->references('id')->on('rooms');
         });
     }

@@ -18,7 +18,7 @@ window.addEventListener('load', function(e) {
     //   // リクエストをセットアップします
 
       const room=document.getElementById('room');
-      XHR.open("POST", `/menber/${room.dataset.menberId}/add`,true);
+      XHR.open("POST", `/member/${room.dataset.memberId}/add`,true);
   
       // 送信したデータは、ユーザーがフォームで提供したものです
       XHR.send(FD);

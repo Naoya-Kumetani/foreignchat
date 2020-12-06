@@ -1,5 +1,5 @@
 search
-<form method="GET" action="{{route('menbers.search')}}">
+<form method="GET" action="{{route('members.search')}}">
     @csrf
     <div class="form-group row">
         <label for="native_language" class="col-md-4 col-form-label text-md-right">native_language</label>
@@ -82,15 +82,15 @@ search
     <button type="submit">search</button>
 </form>
 
-@foreach($menbers as $menber)
-@if(Auth::user()->id!==$menber->id)
-<a href="{{route('menbers.show',$menber)}}">{{$menber->name}}</a>/{{$menber->introduction}}/{{$menber->birth_year}}/{{$menber->native_language}}/
-@foreach($menber->learning_language as $lang)
+@foreach($members as $member)
+@if(Auth::user()->id!==$member->id)
+<a href="{{route('members.show',$member)}}">{{$member->name}}</a>/{{$member->introduction}}/{{$member->birth_year}}/{{$member->native_language}}/
+@foreach($member->learning_language as $lang)
 {{$lang->language}}
 @endforeach
-<a href="{{route('chats.room',$menber)}}">Let's chat with {{$menber->name}}</a>
+<a href="{{route('chats.room',$member)}}">Let's chat with {{$member->name}}</a>
 <br>
 @endif
 @endforeach
 
-{{ $menbers->links('vendor.pagination.semantic-ui') }}
+{{ $members->links('vendor.pagination.semantic-ui') }}

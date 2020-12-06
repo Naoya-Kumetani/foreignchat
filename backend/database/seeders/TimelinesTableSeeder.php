@@ -16,15 +16,15 @@ class TimelinesTableSeeder extends Seeder
     {
         $dataSet = [
             [
-                'menber_id' => 1,
+                'member_id' => 1,
                 'body' => 'Hi I want to study Japanese.',
             ],
             [
-                'menber_id' => 2,
+                'member_id' => 2,
                 'body' => 'I want to talk with Chinese people',
             ],
             [
-                'menber_id' => 3,
+                'member_id' => 3,
                 'body' => 'Please teach  me  Spanish',
             ],
         ];

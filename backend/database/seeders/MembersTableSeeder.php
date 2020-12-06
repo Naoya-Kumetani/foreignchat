@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Menber;
+use App\Models\Member;
 
-class MenbersTableSeeder extends Seeder
+class MembersTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -217,7 +217,7 @@ class MenbersTableSeeder extends Seeder
         ];
 
         foreach ($dataSet as $data) {
-            Menber::create($data);
+            Member::create($data);
         }
     }
 }
