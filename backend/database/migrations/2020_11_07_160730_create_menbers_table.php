@@ -19,8 +19,8 @@ class CreateMenbersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('introduction');
-            $table->date('birthday');
-            $table->string('nationality');
+            $table->string('birth_year');
+            $table->string('native_language');
             $table->timestamps();
         });
     }

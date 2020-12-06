@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class MenberController extends Controller
 {
     public function menbers(){
-        $menbers=Menber::orderBy('id', 'desc')->get();
+        $menbers=Menber::orderBy('id', 'asc')->paginate(10);
         return view('menber',compact("menbers"));
     }
 
@@ -34,8 +34,8 @@ class MenberController extends Controller
         $menber->name = $request->name;
         $menber->email = $request->email;
         $menber->introduction = $request->introduction;
-        $menber->birthday = $request->birthday;
-        $menber->nationality = $request->nationality;
+        $menber->birth_year = $request->birth_year;
+        $menber->native_language = $request->native_language;
         foreach($request->learning_language as $i => $input_language){
             if(empty($menber->learning_language[$i])){
                 $menber->learning_language[$i] = new Learning_language;
@@ -57,7 +57,7 @@ class MenberController extends Controller
 
     public function search(Request $request){
         $menbers=Menber::where([
-            ['nationality','=',"$request->nationality"]
+            ['native_language','=',"$request->native_language"]
         ])->get();
         
         $searchedMenbers=[];

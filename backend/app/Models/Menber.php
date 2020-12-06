@@ -20,7 +20,7 @@ class Menber extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','introduction','birthday','nationality'
+        'name', 'email', 'password','introduction','birth_year','native_language'
     ];
     /**
      * The attributes that should be hidden for arrays.

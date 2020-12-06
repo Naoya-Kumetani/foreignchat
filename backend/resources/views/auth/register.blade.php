@@ -70,22 +70,54 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="birthday" class="col-md-4 col-form-label text-md-right">birthday</label>
+                            <label for="birth_year" class="col-md-4 col-form-label text-md-right">Birth Year</label>
 
                             <div class="col-md-6">
-                                <input id="birthday"  class="form-control" name="birthday">
+                                <select id="birth_year"  class="form-control" name="birth_year">
+                                    <?php for($i=1900;$i<=date('Y');$i++): ?>
+                                        <option value="<?php echo $i ?>"><?php echo $i ?></option>
+                                    <?php endfor ?>
+                                </select>               
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="nationality" class="col-md-4 col-form-label text-md-right">nationality</label>
+                            <label for="native_language" class="col-md-4 col-form-label text-md-right">Native Language</label>
 
                             <div class="col-md-6">
-                                <select id="nationality"  class="form-control" name="nationality">
-                                    <option value="United Satates">United Satates</option>
-                                    <option value="Japan">Japan</option>
-                                    <option value="Korea">Korea</option>
-                                    <option value="China">China</option>
+                                <select id="native_language"  class="form-control" name="native_language">
+                                <option value="English">English</option>
+                                    <option value="v">Chinese</option>
+                                    <option value="Hindi">Hindi</option>
+                                    <option value="Spanish">Spanish</option>
+                                    <option value="Arabic">Arabic</option>
+                                    <option value="Bengali">Bengali</option>
+                                    <option value="Portuguese">Portuguese</option>
+                                    <option value="Russian">Russian</option>
+                                    <option value="Japanese">Japanese</option>
+                                    <option value="French">French</option>
+                                    <option value="German">German</option>
+                                    <option value="Punjabi">Punjabi</option>
+                                    <option value="Javanese">Javanese</option>
+                                    <option value="Korean">Korean</option>
+                                    <option value="Tamil">Tamil</option>
+                                    <option value="Vietnamese">Vietnamese</option>
+                                    <option value="Telugu">Telugu</option>
+                                    <option value="Marathi">Marathi</option>
+                                    <option value="Urdu">Urdu</option>
+                                    <option value="Italian">Italian</option>
+                                    <option value="Turkish">Turkish</option>
+                                    <option value="Polish">Polish</option>
+                                    <option value="Gujarati">Gujarati</option>
+                                    <option value="Persian">Persian</option>
+                                    <option value="Thai">Thai</option>
+                                    <option value="Ukrainian">Ukrainian</option>
+                                    <option value="Malayalam">Malayalam</option>
+                                    <option value="Kannada">Kannada</option>
+                                    <option value="Azerbaijani">Azerbaijani</option>
+                                    <option value="Odia">Odia</option>
+                                    <option value="Burmese">Burmese</option>
+                                    <option value="Others">Others</option>
                                 </select>               
                             </div>
                         </div>
@@ -95,10 +127,38 @@
 
                             <div class="col-md-6">
                                 <select id="learning_language_0"  class="form-control" name="learning_language[0]">
-                                    <option value="English">English</option>
+                                <option value="English">English</option>
+                                    <option value="v">Chinese</option>
+                                    <option value="Hindi">Hindi</option>
+                                    <option value="Spanish">Spanish</option>
+                                    <option value="Arabic">Arabic</option>
+                                    <option value="Bengali">Bengali</option>
+                                    <option value="Portuguese">Portuguese</option>
+                                    <option value="Russian">Russian</option>
                                     <option value="Japanese">Japanese</option>
+                                    <option value="French">French</option>
+                                    <option value="German">German</option>
+                                    <option value="Punjabi">Punjabi</option>
+                                    <option value="Javanese">Javanese</option>
                                     <option value="Korean">Korean</option>
-                                    <option value="Chinese">Chinese</option>
+                                    <option value="Tamil">Tamil</option>
+                                    <option value="Vietnamese">Vietnamese</option>
+                                    <option value="Telugu">Telugu</option>
+                                    <option value="Marathi">Marathi</option>
+                                    <option value="Urdu">Urdu</option>
+                                    <option value="Italian">Italian</option>
+                                    <option value="Turkish">Turkish</option>
+                                    <option value="Polish">Polish</option>
+                                    <option value="Gujarati">Gujarati</option>
+                                    <option value="Persian">Persian</option>
+                                    <option value="Thai">Thai</option>
+                                    <option value="Ukrainian">Ukrainian</option>
+                                    <option value="Malayalam">Malayalam</option>
+                                    <option value="Kannada">Kannada</option>
+                                    <option value="Azerbaijani">Azerbaijani</option>
+                                    <option value="Odia">Odia</option>
+                                    <option value="Burmese">Burmese</option>
+                                    <option value="Others">Others</option>
                                 </select>     
                             </div>
                         </div>
@@ -108,10 +168,38 @@
 
                             <div class="col-md-6">
                                 <select id="learning_language_1"  class="form-control" name="learning_language[1]">
-                                    <option value="English">English</option>
+                                <option value="English">English</option>
+                                    <option value="v">Chinese</option>
+                                    <option value="Hindi">Hindi</option>
+                                    <option value="Spanish">Spanish</option>
+                                    <option value="Arabic">Arabic</option>
+                                    <option value="Bengali">Bengali</option>
+                                    <option value="Portuguese">Portuguese</option>
+                                    <option value="Russian">Russian</option>
                                     <option value="Japanese">Japanese</option>
+                                    <option value="French">French</option>
+                                    <option value="German">German</option>
+                                    <option value="Punjabi">Punjabi</option>
+                                    <option value="Javanese">Javanese</option>
                                     <option value="Korean">Korean</option>
-                                    <option value="Chinese">Chinese</option>
+                                    <option value="Tamil">Tamil</option>
+                                    <option value="Vietnamese">Vietnamese</option>
+                                    <option value="Telugu">Telugu</option>
+                                    <option value="Marathi">Marathi</option>
+                                    <option value="Urdu">Urdu</option>
+                                    <option value="Italian">Italian</option>
+                                    <option value="Turkish">Turkish</option>
+                                    <option value="Polish">Polish</option>
+                                    <option value="Gujarati">Gujarati</option>
+                                    <option value="Persian">Persian</option>
+                                    <option value="Thai">Thai</option>
+                                    <option value="Ukrainian">Ukrainian</option>
+                                    <option value="Malayalam">Malayalam</option>
+                                    <option value="Kannada">Kannada</option>
+                                    <option value="Azerbaijani">Azerbaijani</option>
+                                    <option value="Odia">Odia</option>
+                                    <option value="Burmese">Burmese</option>
+                                    <option value="Others">Others</option>
                                 </select>     
                             </div>
                         </div>
@@ -121,10 +209,38 @@
 
                             <div class="col-md-6">
                                 <select id="learning_language_2"  class="form-control" name="learning_language[2]">
-                                    <option value="English">English</option>
+                                <option value="English">English</option>
+                                    <option value="v">Chinese</option>
+                                    <option value="Hindi">Hindi</option>
+                                    <option value="Spanish">Spanish</option>
+                                    <option value="Arabic">Arabic</option>
+                                    <option value="Bengali">Bengali</option>
+                                    <option value="Portuguese">Portuguese</option>
+                                    <option value="Russian">Russian</option>
                                     <option value="Japanese">Japanese</option>
+                                    <option value="French">French</option>
+                                    <option value="German">German</option>
+                                    <option value="Punjabi">Punjabi</option>
+                                    <option value="Javanese">Javanese</option>
                                     <option value="Korean">Korean</option>
-                                    <option value="Chinese">Chinese</option>
+                                    <option value="Tamil">Tamil</option>
+                                    <option value="Vietnamese">Vietnamese</option>
+                                    <option value="Telugu">Telugu</option>
+                                    <option value="Marathi">Marathi</option>
+                                    <option value="Urdu">Urdu</option>
+                                    <option value="Italian">Italian</option>
+                                    <option value="Turkish">Turkish</option>
+                                    <option value="Polish">Polish</option>
+                                    <option value="Gujarati">Gujarati</option>
+                                    <option value="Persian">Persian</option>
+                                    <option value="Thai">Thai</option>
+                                    <option value="Ukrainian">Ukrainian</option>
+                                    <option value="Malayalam">Malayalam</option>
+                                    <option value="Kannada">Kannada</option>
+                                    <option value="Azerbaijani">Azerbaijani</option>
+                                    <option value="Odia">Odia</option>
+                                    <option value="Burmese">Burmese</option>
+                                    <option value="Others">Others</option>
                                 </select>     
                             </div>
                         </div>

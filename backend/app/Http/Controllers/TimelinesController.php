@@ -38,7 +38,8 @@ class TimelinesController extends Controller
 
     public function show(Timeline $timeline){
     $timeline->load('replies.menber');
-    return view('timeline.show', compact('timeline'));
+    $menber= Menber::where('id','=' ,$timeline->menber_id)->get();
+    return view('timeline.show', compact('timeline','menber'));
     }
 
     public function reply(Request $request, Timeline $timeline)

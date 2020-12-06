@@ -74,10 +74,19 @@ class ChatsController extends Controller
     
     $room=Room::findByMembers(Auth::user(),$menber);
     
+    if (request()->file) {
+        $file_name = time() . '.' . request()->file->getClientOriginalName();
+        request()->file->storeAs('public', $file_name);
+    }
+    
     $chat=new Chat;
     $chat->menber_id = Auth::user()->id;
     $chat->room_id = $room->id;
     $chat->body = $request->body;
+    if (request()->file) {
+        $chat->file = asset('/storage/'.$file_name);
+    }
+    
     $chat->save();
     
     return redirect()->back();

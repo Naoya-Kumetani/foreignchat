@@ -56,8 +56,8 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:menbers'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'introduction' => ['required', 'string',' max:300'],
-            'birthday' => [ 'required','string'],
-            'nationality' => [ 'required','string'],
+            'birth_year' => [ 'required','string'],
+            'native_language' => [ 'required','string'],
             'learning_language.*' => [ 'required','string'],
         ]);
     }
@@ -75,8 +75,8 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'introduction' => $data['introduction'],
-            'birthday' => $data['birthday'],
-            'nationality' => $data['nationality'],
+            'birth_year' => $data['birth_year'],
+            'native_language' => $data['native_language'],
         ]);
 
         foreach($data['learning_language'] as $i => $input_language){

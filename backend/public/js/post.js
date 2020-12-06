@@ -27,11 +27,12 @@ window.addEventListener('load', function(e) {
     // form 要素にアクセスしなければなりません
     const form = document.getElementById("new-message");
     const textarea = document.getElementById("form");
-  
+    const file = document.getElementById( 'file' );
     // フォームの submit イベントを乗っ取ります
     form.addEventListener("submit", function (event) {
       event.preventDefault();
       sendData();
       textarea.value = '';
+      file.value='';
     });
   });

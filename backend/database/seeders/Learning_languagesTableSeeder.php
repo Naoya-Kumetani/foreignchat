@@ -18,12 +18,12 @@ class Learning_languagesTableSeeder extends Seeder
             [
                 'id' =>1,
                 'menber_id'=>'1',
-                'language' => 'JA'
+                'language' => 'Japanese'
             ],
             [
                 'id' =>2,
                 'menber_id'=>'2',
-                'language' => 'EN',
+                'language' => 'English',
             ]
             ];
 

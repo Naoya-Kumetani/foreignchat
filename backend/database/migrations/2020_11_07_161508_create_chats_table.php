@@ -27,6 +27,7 @@ class CreateChatsTable extends Migration
             $table->unsignedBigInteger('menber_id');
             $table->unsignedBigInteger('room_id');
             $table->text('body',1000);
+            $table->string('file')->nullable();
             $table->timestamps();
             $table->foreign('menber_id')->references('id')->on('menbers');
             $table->foreign('room_id')->references('id')->on('rooms');
