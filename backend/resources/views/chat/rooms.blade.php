@@ -12,30 +12,29 @@
                     <div class="col-sm-3">
                         @foreach($lastMessages as $lastMessage)
                             @if($lastMessage->member_id === $member->id)
-                                {{$lastMessage->body}}
+                                @if(empty($lastMessage->file))
+                                    {{$lastMessage->body}}
+                                @else
+                                    <p>{{$lastMessage->member->name}}が画像を送信しました</p>
+                                @endif
                             @endif
                         @endforeach
                     </div>
                     <div class="col-sm-6 row">
                         @foreach($lastMessages as $lastMessage)
                             @if($lastMessage->member_id === $member->id)
-                                <div class="col-sm-6 row">
                                     {{$lastMessage->created_at}}
-                                </div>
-                                <div class="col-sm-6" style="text-align:right;">
-                                    <p class="maru"></p>
-                                </div>
                             @endif
                         @endforeach
                     </div>
                     <div class="col-sm-3 rooms-form row">
-                        <div class="col-sm-6" style="text-align:right;">
+                        <div class="col-lg-6" style="text-align:right;">
                             <form method="POST" action="{{ route('chats.delete', $member->id) }}">
                                 @csrf
                                 <button type="submit" class="btn btn-danger">delete</button>
                             </form>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-lg-6">
                             <form method="GET" action="{{ route('chats.room',$member) }}">
                                 @csrf
                                 <button type="submit" class="btn btn-primary">Chat</button>

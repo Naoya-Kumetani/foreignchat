@@ -18,17 +18,17 @@ class RepliesTableSeeder extends Seeder
             [
                 'member_id' => 2,
                 'timeline_id' => 1,
-                'body' => 'ミニブログデビューおめでとう！',
+                'body' => 'good',
             ],
             [
                 'member_id' => 1,
                 'timeline_id' => 1,
-                'body' => 'ありがとう！',
+                'body' => 'nice！',
             ],
             [
                 'member_id' => 1,
                 'timeline_id' => 2,
-                'body' => 'ユーザーID: 1 の返信だよ',
+                'body' => 'hello',
             ],
         ];
 

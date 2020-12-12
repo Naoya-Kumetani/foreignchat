@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="chat-container row justify-content-center" id="room" data-member-id="{{$member->id}}">
-    <div class="chat-area col-md-8 offset-md-2 chat">
+<div class="chat-container row justify-content-center" id="room" data-member-id="{{$member->id}}" style="position:absolute; bottom:130px; left:200px;">
+    <div class="chat-area"  class="col-md-8 offset-md-2">
         <div id="comment-data">
         </div>
     </div>

@@ -31,8 +31,6 @@ class ChatsController extends Controller
             }
         }
 
-        // $json = ["lastMessages" => $lastMessages];
-        // return response()->json($json);
         return view('chat.rooms',compact('members','lastMessages'));
     }
 

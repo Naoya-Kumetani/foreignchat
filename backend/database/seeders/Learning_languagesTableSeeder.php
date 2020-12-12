@@ -22,8 +22,13 @@ class Learning_languagesTableSeeder extends Seeder
             ],
             [
                 'id' =>2,
-                'member_id'=>'2',
+                'member_id'=>'1',
                 'language' => 'English',
+            ],
+            [
+                'id' =>3,
+                'member_id'=>'1',
+                'language' => 'French',
             ]
             ];
 

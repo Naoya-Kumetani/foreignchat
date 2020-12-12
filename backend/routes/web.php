@@ -38,7 +38,6 @@ Route::get('rooms', 'App\Http\Controllers\ChatsController@rooms')->name('rooms')
 Route::get('/member/{member}/room', 'App\Http\Controllers\ChatsController@room')->name('room');
 Route::post('/member/{member}/add', 'App\Http\Controllers\ChatsController@add')->name('add');
 Route::get('member/{member}/result/ajax', 'App\Http\Controllers\ChatsController@getData')->name('result');
-// Route::post('{room}/delete', 'App\Http\Controllers\ChatsController@delete')->name('delete');
 Route::post('{member}/delete', 'App\Http\Controllers\ChatsController@delete')->name('delete');
 });
 
