@@ -123,7 +123,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="learning_language_0" class="col-md-4 col-form-label text-md-right">learning_language</label>
+                            <label for="learning_language_0" class="col-md-4 col-form-label text-md-right">Is learning</label>
 
                             <div class="col-md-6">
                                 <select id="learning_language_0"  class="form-control" name="learning_language[0]">
@@ -164,11 +164,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="learning_language_1" class="col-md-4 col-form-label text-md-right">learning_language</label>
+                            <label for="learning_language_1" class="col-md-4 col-form-label text-md-right">Is learning</label>
 
                             <div class="col-md-6">
                                 <select id="learning_language_1"  class="form-control" name="learning_language[1]">
-                                <option value="English">English</option>
+                                    <option value="empty">- - </option>
+                                    <option value="English">English</option>
                                     <option value="v">Chinese</option>
                                     <option value="Hindi">Hindi</option>
                                     <option value="Spanish">Spanish</option>
@@ -205,11 +206,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="learning_language_2" class="col-md-4 col-form-label text-md-right">learning_language</label>
+                            <label for="learning_language_2" class="col-md-4 col-form-label text-md-right">Is learning</label>
 
                             <div class="col-md-6">
                                 <select id="learning_language_2"  class="form-control" name="learning_language[2]">
-                                <option value="English">English</option>
+                                    <option value="empty">- - </option>
+                                    <option value="English">English</option>
                                     <option value="v">Chinese</option>
                                     <option value="Hindi">Hindi</option>
                                     <option value="Spanish">Spanish</option>
@@ -247,7 +249,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary register-btn">
                                     {{ __('Register') }}
                                 </button>
                             </div>
@@ -259,3 +261,5 @@
     </div>
 </div>
 @endsection
+
+

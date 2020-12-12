@@ -8,6 +8,7 @@ use App\Models\Member;
 use App\Models\User;
 use App\Models\Room;
 use Illuminate\Support\Facades\Auth;
+use Validator;
 
 
 class ChatsController extends Controller
@@ -15,18 +16,24 @@ class ChatsController extends Controller
     public function rooms(){
         $rooms = Room::where('member1_id', '=', Auth::user()->id)
         ->orWhere('member2_id', '=', Auth::user()->id)
+        ->orderBy('created_at', 'desc')
         ->get();
 
         $members = [];
+        $lastMessages=[];
         foreach($rooms as $room){
             if($room->member1_id === Auth::user()->id){
                 array_push($members,Member::where('id', '=', $room->member2_id)->first());
+                array_push($lastMessages,Chat::where('room_id', '=', $room->id)->orderBy('created_at', 'desc')->first());
             }elseif($room->member2_id === Auth::user()->id){
                 array_push($members,Member::where('id', '=', $room->member1_id)->first());
+                array_push($lastMessages,Chat::where('room_id', '=', $room->id)->orderBy('created_at', 'desc')->first());
             }
         }
-        
-        return view('chat.rooms',compact('members'));
+
+        // $json = ["lastMessages" => $lastMessages];
+        // return response()->json($json);
+        return view('chat.rooms',compact('members','lastMessages'));
     }
 
     public function room(Member $member)
@@ -63,7 +70,7 @@ class ChatsController extends Controller
                 ])->first();
         }
         // $chats = Chat::where('room_id', '=', $room->id)->get();
-        $chats = Chat::where('room_id', '=', $room->id)->with('member')->orderBy('created_at', 'desc')->get();
+        $chats = Chat::where('room_id', '=', $room->id)->with('member')->orderBy('created_at', 'asc')->get();
         // $chats = Chat::with('member')->get();
         $json = ["chats" => $chats];
         return response()->json($json);
@@ -91,5 +98,30 @@ class ChatsController extends Controller
     
     return redirect()->back();
 }
+
+    public function delete(Member $member){
+        $room = Room::where([
+            ['member1_id', '=', Auth::user()->id],
+            ['member2_id', '=', $member->id]
+            ])
+            ->orWhere([
+            ['member1_id', '=', $member->id],
+            ['member2_id', '=', Auth::user()->id]
+            ])
+            ->first();
+
+            $chats = Chat::where('room_id','=',$room->id)
+            ->get();
+
+            $chats->each->delete();
+            
+
+            
+
+            $room->delete();
+            
+            
+        return redirect()->back();
+    }
 
 }

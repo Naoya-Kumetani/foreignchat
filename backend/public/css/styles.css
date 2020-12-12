@@ -1,0 +1,84 @@
+.mem-name{
+    line-height: 50px;
+} 
+
+.rooms-form{
+    text-align: right;
+    line-height: 50px;
+}
+
+.chat{
+    margin: 0;
+    padding: 0;
+}
+
+.comment-area{
+    margin: 0;
+    padding: 0;
+}
+
+.comment-area div{
+    padding: 0;
+}
+
+.comment-area input,.comment-area button{
+    height: 62px;
+}
+
+/* .width{
+    width:100%;
+} */
+
+.comment-container{
+    margin-top: 20px;
+}
+
+.fixed {
+    position: fixed;
+    bottom: 0; 
+}
+
+.custom-file{
+    margin-bottom: 20px;
+}
+
+/* .chat-container{
+    height: 640px;
+} */
+
+.button-parent{
+    position: relative;
+}
+
+.button-child{
+    position: absolute;
+	bottom: 0;
+}
+
+.maru{
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    border-radius: 22px;
+    background-color: #e82a2a;
+    color: #fff;
+    text-align: center;
+    line-height: 22px;
+    margin-bottom: 6px;
+}
+
+@media screen and (max-width: 1000px) {
+    .button-parent{
+        margin-top: 50px;
+    }
+
+    .button-child{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .timelines-btn-child{
+        width: 100%;
+    }
+}

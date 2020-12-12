@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class MemberController extends Controller
 {
     public function members(){
-        $members=Member::orderBy('id', 'asc')->paginate(10);
+        $members=Member::orderBy('id', 'desc')->paginate(15);
         return view('member',compact("members"));
     }
 
@@ -52,7 +52,7 @@ class MemberController extends Controller
         
         $member->save();
 
-        return redirect()->back()->with(['message' => 'updated']);
+        return redirect()->back();
     }
 
     public function search(Request $request){
@@ -69,8 +69,7 @@ class MemberController extends Controller
                 array_push($searchedMembers,$member);
             }
         }
-        
-        return view('member.searchedMembers',compact("searchedMembers"));
+         return view('member.searchedMenbers',compact("searchedMembers"));
     }
 
     public function form(){

@@ -61,7 +61,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="native_language" class="col-md-4 col-form-label text-md-right">Native Language</label>
+                            <label for="native_language" class="col-md-4 col-form-label text-md-right">Native language</label>
 
                             <div class="col-md-6">
                                 <select id="native_language"  class="form-control" name="native_language" value="{{$member->native_language}}">
@@ -102,7 +102,7 @@
                         </div>
                         
                         <div class="form-group row">
-                            <label for="learning_language_0" class="col-md-4 col-form-label text-md-right">learning_language</label>
+                            <label for="learning_language_0" class="col-md-4 col-form-label text-md-right">Is learning</label>
 
                             <div class="col-md-6">
                                 <select id="learning_language_0"  class="form-control" name="learning_language[0]" value="{{$member->learning_language[0]->language}}" required>
@@ -143,11 +143,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="learning_language_1" class="col-md-4 col-form-label text-md-right">learning_language</label>
+                            <label for="learning_language_1" class="col-md-4 col-form-label text-md-right">Is learning</label>
 
                             <div class="col-md-6">
                                 <select id="learning_language_1"  class="form-control" name="learning_language[1]" value="{{$member->learning_language[1]->language}}" required>
-                                <option value="English">English</option>
+                                    <option value="empty">- - </option>
+                                    <option value="English">English</option>
                                     <option value="v">Chinese</option>
                                     <option value="Hindi">Hindi</option>
                                     <option value="Spanish">Spanish</option>
@@ -184,11 +185,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="learning_language_2" class="col-md-4 col-form-label text-md-right">learning_language</label>
+                            <label for="learning_language_2" class="col-md-4 col-form-label text-md-right">Is learning</label>
 
                             <div class="col-md-6">
                                 <select id="learning_language_2"  class="form-control" name="learning_language[2]" value="{{$member->learning_language[2]->language}}" required>
-                                <option value="English">English</option>
+                                    <option value="empty">- - </option>
+                                    <option value="English">English</option>
                                     <option value="v">Chinese</option>
                                     <option value="Hindi">Hindi</option>
                                     <option value="Spanish">Spanish</option>
@@ -238,3 +240,4 @@
     </div>
 </div>
 @endsection
+

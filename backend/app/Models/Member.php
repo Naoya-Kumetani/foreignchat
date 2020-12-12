@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Models\Chat;
 use App\Models\Learning_language;
+use App\Models\Room;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -34,6 +35,10 @@ class Member extends Authenticatable
 
     public function chat(){
         return $this->hasMany(Chat::class);
+    }
+
+    public function room(){
+        return $this->hasMany(Room::class);
     }
 
     public function learning_language(){

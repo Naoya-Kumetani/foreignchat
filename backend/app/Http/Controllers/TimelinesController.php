@@ -16,10 +16,6 @@ class TimelinesController extends Controller
         return view('timeline.timelines', compact('timelines'));
     }
 
-    public function create(){
-        return view('timeline.create');
-    }
-
     public function store(Request $request)
     {
     $timeline = new Timeline;

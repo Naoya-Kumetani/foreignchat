@@ -38,12 +38,14 @@ Route::get('rooms', 'App\Http\Controllers\ChatsController@rooms')->name('rooms')
 Route::get('/member/{member}/room', 'App\Http\Controllers\ChatsController@room')->name('room');
 Route::post('/member/{member}/add', 'App\Http\Controllers\ChatsController@add')->name('add');
 Route::get('member/{member}/result/ajax', 'App\Http\Controllers\ChatsController@getData')->name('result');
+// Route::post('{room}/delete', 'App\Http\Controllers\ChatsController@delete')->name('delete');
+Route::post('{member}/delete', 'App\Http\Controllers\ChatsController@delete')->name('delete');
 });
 
-Route::get('/timelines', 'App\Http\Controllers\TimelinesController@timelines')->name('timelines.timelines');
+
 Route::prefix('timelines')->as('timelines.')->group(function () {
     Route::middleware('auth')->group(function () {
-    Route::get('create', 'App\Http\Controllers\TimelinesController@create')->name('create');
+    Route::get('/', 'App\Http\Controllers\TimelinesController@timelines')->name('timelines');
     Route::post('store', 'App\Http\Controllers\TimelinesController@store')->name('store');
     Route::post('{timeline}/delete', 'App\Http\Controllers\TimelinesController@delete')->name('delete');
     Route::post('{timeline}/reply', 'App\Http\Controllers\TimelinesController@reply')->name('reply');
