@@ -36,8 +36,11 @@ Route::get('form', 'App\Http\Controllers\memberController@form')->name('form');
 Route::as('chats.')->middleware('auth')->group(function () {
 Route::get('rooms', 'App\Http\Controllers\ChatsController@rooms')->name('rooms');
 Route::get('/member/{member}/room', 'App\Http\Controllers\ChatsController@room')->name('room');
+Route::get('/member/{member}/fetch', 'App\Http\Controllers\ChatsController@fetch')->name('fetch');
+Route::get('/member/{member}/getData', 'App\Http\Controllers\ChatsController@getData')->name('getData');
+// scrollメソッドにもrouting必要か
+// Route::get('member/{member}/result/ajax', 'App\Http\Controllers\ChatsController@getData')->name('result');
 Route::post('/member/{member}/add', 'App\Http\Controllers\ChatsController@add')->name('add');
-Route::get('member/{member}/result/ajax', 'App\Http\Controllers\ChatsController@getData')->name('result');
 Route::post('{member}/delete', 'App\Http\Controllers\ChatsController@delete')->name('delete');
 });
 
