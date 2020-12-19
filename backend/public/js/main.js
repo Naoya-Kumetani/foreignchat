@@ -12635,7 +12635,7 @@ new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     }
   },
   created: function created() {
-    setInterval(this.getNewMessage, 1000);
+    setInterval(this.getNewMessage, 3000);
   }
 });
 

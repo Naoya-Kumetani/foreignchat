@@ -23,8 +23,6 @@ class AddRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-                'file' => 'image|mimes:jpeg,png,jpg'
-        ];
+        
     }
 }

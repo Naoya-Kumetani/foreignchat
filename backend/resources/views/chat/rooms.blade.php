@@ -12,11 +12,7 @@
                     <div class="col-sm-3">
                         @foreach($lastMessages as $lastMessage)
                             @if($lastMessage->member_id === $member->id)
-                                @if(empty($lastMessage->file))
-                                    {{$lastMessage->body}}
-                                @else
-                                    <p>{{$lastMessage->member->name}}が画像を送信しました</p>
-                                @endif
+                                {{$lastMessage->body}}
                             @endif
                         @endforeach
                     </div>

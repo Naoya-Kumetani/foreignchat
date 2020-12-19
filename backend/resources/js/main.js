@@ -51,5 +51,5 @@ new Vue({
             })
                
         }
-    },created:function(){setInterval(this.getNewMessage, 1000)}
+    },created:function(){setInterval(this.getNewMessage, 3000)}
 });

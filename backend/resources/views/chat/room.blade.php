@@ -8,7 +8,13 @@
                 <button type="button" v-on:click="fetchChats" >past 20 messages</button>
             </div>
             <div v-for="chat in chats">
-                @{{ chat.member.name }} | @{{ chat.body }}
+                @{{ chat.member.name }} | @{{ chat.body }} | @{{new Date(chat.created_at).toLocaleString('Ja',{
+                                                    "hour12": false,
+                                                    "month": "numeric",
+                                                    "day": "numeric",
+                                                    "hour": "2-digit",
+                                                    "minute": "2-digit"
+                                            })}}
             </div>
         </div>
     </div>
@@ -20,10 +26,7 @@
                     <div class="comment-container justify-content-center">
                         <div class="input-group comment-area row">
                             <div class="col-md-8 offset-md-2">
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="validatedCustomFile" name="file">
-                                    <label class="custom-file-label" for="validatedCustomFile" id="label">Choose file...</label>
-                                </div>
+                               
                             </div>
                             <div class="col-md-8 offset-md-2 row">
                                 <div class="custom-file col-md-10">
