@@ -12600,7 +12600,6 @@ new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     fetchChats: function fetchChats() {
       var _this = this;
 
-      console.log("/member/".concat(room.dataset.memberId, "/fetch"));
       axios.get("/member/".concat(room.dataset.memberId, "/fetch"), {
         params: {
           beforeId: this.chats[0].id,
@@ -12616,7 +12615,27 @@ new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       })["catch"](function (error) {
         console.log(error);
       });
+    },
+    getNewMessage: function getNewMessage() {
+      var _this2 = this;
+
+      axios.get("/member/".concat(room.dataset.memberId, "/getNewMessages"), {
+        params: {
+          latestId: this.chats.slice(-1)[0].id
+        }
+      }).then(function (response) {
+        if (response.data.newMessages.length) {
+          response.data.newMessages.forEach(function (value) {
+            _this2.chats.push(value);
+          });
+        }
+      })["catch"](function (error) {
+        console.log(error);
+      });
     }
+  },
+  created: function created() {
+    setInterval(this.getNewMessage, 1000);
   }
 });
 

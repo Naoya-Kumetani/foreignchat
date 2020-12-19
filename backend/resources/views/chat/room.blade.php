@@ -8,7 +8,7 @@
                 <button type="button" v-on:click="fetchChats" >past 20 messages</button>
             </div>
             <div v-for="chat in chats">
-                @{{ chat.body }}
+                @{{ chat.member.name }} | @{{ chat.body }}
             </div>
         </div>
     </div>

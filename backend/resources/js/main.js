@@ -11,11 +11,10 @@ new Vue({
     el: '#room',
     data:{
         page: 0,
-        chats: JSON.parse(room.dataset.chats)
+        chats: JSON.parse(room.dataset.chats),
     },
     methods: {
         fetchChats() {
-            console.log(`/member/${room.dataset.memberId}/fetch`);
             axios.get(`/member/${room.dataset.memberId}/fetch`, {
                 params: {
                     beforeId: this.chats[0].id,
@@ -34,6 +33,23 @@ new Vue({
                 console.log(error);
             })
 
+        },getNewMessage(){
+            axios.get(`/member/${room.dataset.memberId}/getNewMessages`, {
+                    params: {
+                        latestId:this.chats.slice(-1)[0].id
+                    }
+            })
+            .then(response => {
+                if (response.data.newMessages.length) {
+                    response.data.newMessages.forEach (value => {
+                        this.chats.push(value);
+                    });
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
+               
         }
-    }
+    },created:function(){setInterval(this.getNewMessage, 1000)}
 });

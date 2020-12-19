@@ -75,29 +75,29 @@ class ChatsController extends Controller
         return view('chat.room', compact('member','room','messages'));
     }
     
-    public function getNewData(Member $member)
-    {
-        Room::findByMembers(Auth::user(),$member);
-        if(Auth::user()->id > $member->id){
-            $room=Room::where([
-                ['member1_id', '=', Auth::user()->id],
-                ['member2_id', '=', $member->id]
-                ])->first();
-        }else{
-            $room=Room::where([
-                ['member1_id', '=', $member->id],
-                ['member2_id', '=', Auth::user()->id]
-                ])->first();
-        }
+    // public function getNewMessage(Member $member)
+    // {
+    //     $room = Room::findByMembers(Auth::user(),$member);
+    //     // if(Auth::user()->id > $member->id){
+    //     //     $room=Room::where([
+    //     //         ['member1_id', '=', Auth::user()->id],
+    //     //         ['member2_id', '=', $member->id]
+    //     //         ])->first();
+    //     // }else{
+    //     //     $room=Room::where([
+    //     //         ['member1_id', '=', $member->id],
+    //     //         ['member2_id', '=', Auth::user()->id]
+    //     //         ])->first();
+    //     // }
         
-        $newData = Chat::where('room_id', '=', $room->id)
-        ->with('member')
-        ->latest()
-        ->first();
+    //     $newMessage = Chat::where('room_id', '=', $room->id)
+    //     ->where('id', '>',$latestId)
+    //     ->with('member')
+    //     ->get();
 
-        $json = ["newData" => $newData];
-        return response()->json($json);
-    }
+    //     $json = ["newMessage" => $newMessage];
+    //     return response()->json($json);
+    // }
     
 
     public function fetch(Member $member,Request $request) {
@@ -152,9 +152,35 @@ class ChatsController extends Controller
     }
     
     $chat->save();
-    
+
+    // $chat = Chat::getNewMessage($member,$request->latestId);
+    // return response()->json(["chat" => $chat], 200);
     return redirect()->back();
 }
+
+public static function getNewMessages(Member $member,Request $request)
+    {
+        $room = Room::findByMembers(Auth::user(),$member);
+        // if(Auth::user()->id > $member->id){
+        //     $room=Room::where([
+        //         ['member1_id', '=', Auth::user()->id],
+        //         ['member2_id', '=', $member->id]
+        //         ])->first();
+        // }else{
+        //     $room=Room::where([
+        //         ['member1_id', '=', $member->id],
+        //         ['member2_id', '=', Auth::user()->id]
+        //         ])->first();
+        // }
+        
+        $newMessages = Chat::where('room_id', '=', $room->id)
+        ->where('id', '>',$request->latestId)
+        ->with('member')
+        ->get();
+        
+        $json = ["newMessages" => $newMessages];
+        return response()->json($json);
+    }
 
     public function delete(Member $member){
         $room = Room::where([

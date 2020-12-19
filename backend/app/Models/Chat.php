@@ -64,4 +64,28 @@ class chat extends Model
         
         return $chats;
     }
+
+    // public static function getNewMessage(Member $member,$latestId)
+    // {
+    //     $room = Room::findByMembers(Auth::user(),$member);
+    //     // if(Auth::user()->id > $member->id){
+    //     //     $room=Room::where([
+    //     //         ['member1_id', '=', Auth::user()->id],
+    //     //         ['member2_id', '=', $member->id]
+    //     //         ])->first();
+    //     // }else{
+    //     //     $room=Room::where([
+    //     //         ['member1_id', '=', $member->id],
+    //     //         ['member2_id', '=', Auth::user()->id]
+    //     //         ])->first();
+    //     // }
+        
+    //     $newMessage = Chat::where('room_id', '=', $room->id)
+    //     ->where('id', '>',$latestId)
+    //     ->with('member')
+    //     ->get();
+
+    //     $json = ["newMessage" => $newMessage];
+    //     return response()->json($json);
+    // }
 }
