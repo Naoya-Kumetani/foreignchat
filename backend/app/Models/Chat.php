@@ -38,17 +38,6 @@ class chat extends Model
 }
     public static function getData(Member $member,$beforeId){
         $room = Room::findByMembers(Auth::user(),$member);
-        // if(Auth::user()->id > $member->id){
-        //     $room=Room::where([
-        //         ['member1_id', '=', Auth::user()->id],
-        //         ['member2_id', '=', $member->id]
-        //         ])->first();
-        // }else{
-        //     $room=Room::where([
-        //         ['member1_id', '=', $member->id],
-        //         ['member2_id', '=', Auth::user()->id]
-        //         ])->first();
-        // }
 
         $limit = 10; // 一度に取得する件数
         $chats = Chat::where('room_id', '=', $room->id)
@@ -64,28 +53,4 @@ class chat extends Model
         
         return $chats;
     }
-
-    // public static function getNewMessage(Member $member,$latestId)
-    // {
-    //     $room = Room::findByMembers(Auth::user(),$member);
-    //     // if(Auth::user()->id > $member->id){
-    //     //     $room=Room::where([
-    //     //         ['member1_id', '=', Auth::user()->id],
-    //     //         ['member2_id', '=', $member->id]
-    //     //         ])->first();
-    //     // }else{
-    //     //     $room=Room::where([
-    //     //         ['member1_id', '=', $member->id],
-    //     //         ['member2_id', '=', Auth::user()->id]
-    //     //         ])->first();
-    //     // }
-        
-    //     $newMessage = Chat::where('room_id', '=', $room->id)
-    //     ->where('id', '>',$latestId)
-    //     ->with('member')
-    //     ->get();
-
-    //     $json = ["newMessage" => $newMessage];
-    //     return response()->json($json);
-    // }
 }
