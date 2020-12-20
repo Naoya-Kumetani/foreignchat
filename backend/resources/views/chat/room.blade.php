@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="chat-container row justify-content-center" id="bottom"
-    style="width:100%;overflow-y:scroll;position:absolute;bottom:200px;top:56px;margin:0;padding:0;height:75vh;">
+    style="width:100%;overflow-y:scroll;position:absolute;bottom:200px;top:56px;margin:0;padding:0;height:85vh;">
         <div class="chat-area"  class="col-md-8 offset-md-2" id="room" data-member-id="{{$member->id}}" data-chats="{{json_encode(array_values($messages->all()))}}">
             <div style="text-align:center">
                 <button type="button" v-on:click="fetchChats" >past 20 messages</button>

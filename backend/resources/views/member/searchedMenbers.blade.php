@@ -2,7 +2,15 @@
 
 @section('content')
     @if(empty($searchedMembers))
-        sorry, there are no members
+    <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+            <div class="card">
+                <div class="card-body">
+                    sorry, there are no members
+                </div>
+            </div>
+        </div>
+    </div>
     @else
         <div class="row">
             <div class="col-md-8 offset-md-2 members">

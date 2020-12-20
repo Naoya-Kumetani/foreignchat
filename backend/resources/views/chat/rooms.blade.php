@@ -11,14 +11,14 @@
                 <div class="card-body row">
                     <div class="col-sm-3">
                         @foreach($lastMessages as $lastMessage)
-                            @if($lastMessage->member_id === $member->id)
+                            @if(optional($lastMessage)->member_id === $member->id)
                                 {{$lastMessage->body}}
                             @endif
                         @endforeach
                     </div>
                     <div class="col-sm-6 row">
                         @foreach($lastMessages as $lastMessage)
-                            @if($lastMessage->member_id === $member->id)
+                            @if(optional($lastMessage)->member_id === $member->id)
                                     {{$lastMessage->created_at}}
                             @endif
                         @endforeach

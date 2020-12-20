@@ -12619,19 +12619,35 @@ new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     getNewMessage: function getNewMessage() {
       var _this2 = this;
 
-      axios.get("/member/".concat(room.dataset.memberId, "/getNewMessages"), {
-        params: {
-          latestId: this.chats.slice(-1)[0].id
-        }
-      }).then(function (response) {
-        if (response.data.newMessages.length) {
-          response.data.newMessages.forEach(function (value) {
-            _this2.chats.push(value);
-          });
-        }
-      })["catch"](function (error) {
-        console.log(error);
-      });
+      if (this.chats.length) {
+        axios.get("/member/".concat(room.dataset.memberId, "/getNewMessages"), {
+          params: {
+            latestId: this.chats.slice(-1)[0].id
+          }
+        }).then(function (response) {
+          if (response.data.newMessages.length) {
+            response.data.newMessages.forEach(function (value) {
+              _this2.chats.push(value);
+            });
+          }
+        })["catch"](function (error) {
+          console.log(error);
+        });
+      } else {
+        axios.get("/member/".concat(room.dataset.memberId, "/getNewMessages"), {
+          params: {
+            latestId: 'newId'
+          }
+        }).then(function (response) {
+          if (response.data.newMessages.length) {
+            response.data.newMessages.forEach(function (value) {
+              _this2.chats.unshift(value);
+            });
+          }
+        })["catch"](function (error) {
+          console.log(error);
+        });
+      }
     }
   },
   created: function created() {

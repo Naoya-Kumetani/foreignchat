@@ -1,11 +1,6 @@
 Vue.config.devtools = true;
 import Vue from 'vue';
 const room=document.getElementById('room');
-// import InfiniteLoading from 'vue-infinite-loading'; // ライブラリの読み込み
-// Vue.component('infinite-loading', InfiniteLoading); // コンポーネント化
-// $(function() {
-//     getNewData();
-// });
 
 new Vue({
     el: '#room',
@@ -34,22 +29,39 @@ new Vue({
             })
 
         },getNewMessage(){
-            axios.get(`/member/${room.dataset.memberId}/getNewMessages`, {
+            if(this.chats.length){
+                axios.get(`/member/${room.dataset.memberId}/getNewMessages`, {
+                        params: {
+                            latestId:this.chats.slice(-1)[0].id
+                        }
+                })
+                .then(response => {
+                    if (response.data.newMessages.length) {
+                        response.data.newMessages.forEach (value => {
+                            this.chats.push(value);
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+            } else {
+                axios.get(`/member/${room.dataset.memberId}/getNewMessages`, {
                     params: {
-                        latestId:this.chats.slice(-1)[0].id
+                        latestId:'newId'
                     }
             })
             .then(response => {
                 if (response.data.newMessages.length) {
                     response.data.newMessages.forEach (value => {
-                        this.chats.push(value);
+                        this.chats.unshift(value);
                     });
                 }
             })
             .catch(error => {
                 console.log(error);
             })
-               
+            }
         }
     },created:function(){setInterval(this.getNewMessage, 3000)}
 });

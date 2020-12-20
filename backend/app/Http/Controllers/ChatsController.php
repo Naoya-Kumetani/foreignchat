@@ -7,9 +7,9 @@ use App\Models\Chat;
 use App\Models\Member;
 use App\Models\Room;
 use Illuminate\Support\Facades\Auth;
-// use App\http\Services\chatService;
 use Validator;
 
+use function PHPUnit\Framework\isEmpty;
 
 class ChatsController extends Controller
 {
@@ -37,67 +37,18 @@ class ChatsController extends Controller
     public function room(Member $member)
     {   
         $room = Room::findByMembers(Auth::user(),$member);
-        // if(Auth::user()->id > $member->id){
-        //     $room=Room::where([
-        //         ['member1_id', '=', Auth::user()->id],
-        //         ['member2_id', '=', $member->id]
-        //         ])->first();
-        // }else{
-        //     $room=Room::where([
-        //         ['member1_id', '=', $member->id],
-        //         ['member2_id', '=', Auth::user()->id]
-        //         ])->first();
-        // }
+
 
         $limit = 35;
-        // $message=[];
         $messages = Chat::where('room_id', '=', $room->id)
         ->with('member')
         ->orderBy('created_at', 'desc')
         ->take($limit)
         ->get();
-
         $messages = $messages->sortBy('created_at');
-        // dd($messages);
-
-        // $sort=[];
-        // foreach ($messages as $key => $value) {
-        //     $sort[$key] = $value['id'];
-        // }
-
-        // array_multisort($sort, SORT_ASC, $messages);
-
-        // $messages = $messages->sortBy('created_at');
-
-        // dd($messages);
-        // $chats = Chat::where('room_id', '=', $room->id)->get();
-        // return view('chat.room', compact('chats','member','room'));
+        
         return view('chat.room', compact('member','room','messages'));
     }
-    
-    // public function getNewMessage(Member $member)
-    // {
-    //     $room = Room::findByMembers(Auth::user(),$member);
-    //     // if(Auth::user()->id > $member->id){
-    //     //     $room=Room::where([
-    //     //         ['member1_id', '=', Auth::user()->id],
-    //     //         ['member2_id', '=', $member->id]
-    //     //         ])->first();
-    //     // }else{
-    //     //     $room=Room::where([
-    //     //         ['member1_id', '=', $member->id],
-    //     //         ['member2_id', '=', Auth::user()->id]
-    //     //         ])->first();
-    //     // }
-        
-    //     $newMessage = Chat::where('room_id', '=', $room->id)
-    //     ->where('id', '>',$latestId)
-    //     ->with('member')
-    //     ->get();
-
-    //     $json = ["newMessage" => $newMessage];
-    //     return response()->json($json);
-    // }
     
 
     public function fetch(Member $member,Request $request) {
@@ -105,72 +56,36 @@ class ChatsController extends Controller
         return response()->json(['chats' => $chats], 200);
     }
 
-    // public function getData(Member $member,$beforeId){
-    //     Room::findByMembers(Auth::user(),$member);
-    //     if(Auth::user()->id > $member->id){
-    //         $room=Room::where([
-    //             ['member1_id', '=', Auth::user()->id],
-    //             ['member2_id', '=', $member->id]
-    //             ])->first();
-    //     }else{
-    //         $room=Room::where([
-    //             ['member1_id', '=', $member->id],
-    //             ['member2_id', '=', Auth::user()->id]
-    //             ])->first();
-    //     }
-
-    //     $limit = 10; // 一度に取得する件数
-    //     $chats = Chat::where('room_id', '=', $room->id)
-    //     ->where('id', '<',$beforeId)
-    //     ->with('member')
-    //     ->orderBy('created_at', 'desc')
-    //     ->take($limit)
-    //     ->get();
-        
-    //     if (is_null($chats)) {
-    //         return [];
-    //     }
-        
-    //     return $chats;
-    // }
-
     public function add(Request $request,Member $member)
 {   
     $room=Room::findByMembers(Auth::user(),$member);
-    
     
     $chat=new Chat;
     $chat->member_id = Auth::user()->id;
     $chat->room_id = $room->id;
     $chat->body = $request->body;
    
-    
     $chat->save();
-
-    // $chat = Chat::getNewMessage($member,$request->latestId);
-    // return response()->json(["chat" => $chat], 200);
     return redirect()->back();
 }
 
 public static function getNewMessages(Member $member,Request $request)
     {
+    if($request->latestId){
         $room = Room::findByMembers(Auth::user(),$member);
-        // if(Auth::user()->id > $member->id){
-        //     $room=Room::where([
-        //         ['member1_id', '=', Auth::user()->id],
-        //         ['member2_id', '=', $member->id]
-        //         ])->first();
-        // }else{
-        //     $room=Room::where([
-        //         ['member1_id', '=', $member->id],
-        //         ['member2_id', '=', Auth::user()->id]
-        //         ])->first();
-        // }
-        
         $newMessages = Chat::where('room_id', '=', $room->id)
         ->where('id', '>',$request->latestId)
         ->with('member')
         ->get();
+    }
+
+    if($request->newId){
+        $room = Room::findByMembers(Auth::user(),$member);
+        $newMessages = Chat::where('room_id', '=', $room->id)
+        ->latest()
+        ->with('member')
+        ->first();
+    }
         
         $json = ["newMessages" => $newMessages];
         return response()->json($json);
